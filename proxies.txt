@@ -1,0 +1,2 @@
+http>http://sp19523864:MicroPlan8GB@gate.smartproxy.com:7000
+https>http://sp19523864:MicroPlan8GB@gate.smartproxy.com:7000
