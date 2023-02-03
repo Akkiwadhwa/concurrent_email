@@ -2,7 +2,6 @@ import ast
 import concurrent.futures
 import os
 from threading import Lock
-
 import requests
 from fake_useragent import UserAgent
 from requests.structures import CaseInsensitiveDict
@@ -87,8 +86,11 @@ if o == "A":
     print(f"total emails to sent -->  {len(sending)}")
 
 if o == "B":
-    sending = failed1.readlines()
+    failed_list = failed1.readlines()
+    for q in failed_list:
+        a = ast.literal_eval(q.replace("\n", ""))
+        sending.append(a)
     print(f"total emails to sent --> {len(sending)}")
 
-with concurrent.futures.ThreadPoolExecutor() as executor:
+with concurrent.futures.ThreadPoolExecutor(32) as executor:
     executor.map(mail, sending)
